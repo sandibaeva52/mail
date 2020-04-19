@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity  {
 
 //        toolbar = (Toolbar) findViewById(R.id.toolbar);
         ActionBar actionBar= getSupportActionBar();
-        actionBar.setTitle("E-mail");
+        actionBar.setTitle("All mails");
 //        toolbar.setTitle("All mails");
 //        setSupportActionBar(toolbar);
         Fragment listFr=new MailListFragment();
@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity  {
         FragmentTransaction ft=fragmentManager.beginTransaction();
         ft.replace(R.id.MailList,listFr).commit();
 
-        FragmentManager fragmentManager2=getSupportFragmentManager();
-        FragmentTransaction ft2=fragmentManager2.beginTransaction();
+        FragmentManager fragmentManagerD=getSupportFragmentManager();
+        FragmentTransaction ft2=fragmentManagerD.beginTransaction();
         ft2.replace(R.id.MailDetail,detailFr).commit();
 
 

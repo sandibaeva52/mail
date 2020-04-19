@@ -38,6 +38,8 @@ public class SignupActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                 intent.putExtra("emailKey", newUser);
+//                intent.putExtra("passKey", newPassword);
+
                 Toast.makeText(SignupActivity.this, "User is signed up", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 tools:context=".MailDetailFragment"
+
     >
 
 
@@ -21,7 +22,7 @@ tools:context=".MailDetailFragment"
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="Sender"
         android:textSize="30sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -32,7 +33,7 @@ tools:context=".MailDetailFragment"
         android:id="@+id/tvDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Description"
+        android:text="Some text"
         android:layout_below="@+id/tvName"
         android:textSize="15sp"
         android:layout_marginLeft="16dp"

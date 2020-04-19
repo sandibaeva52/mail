@@ -13,26 +13,22 @@ import androidx.fragment.app.Fragment;
 public class MailDetailFragment extends Fragment {
     public TextView tvName;
     public TextView tvDesc;
-    Mails mails;
+//    Mails mails;
     public MailDetailFragment(){
 
     }
 
-    public MailDetailFragment(Mails mails) {
-        this.mails=mails;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        if(mails!=null){
-            tvName=getView().findViewById(R.id.tvName);
-            tvName.setText(mails.getName());
-
-            tvDesc=getView().findViewById(R.id.tvDesc);
-            tvDesc.setText(mails.getDescription());
-        }
-    }
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        if(mails!=null){
+//            tvName=getView().findViewById(R.id.tvName);
+//            tvName.setText(mails.getName());
+//
+//            tvDesc=getView().findViewById(R.id.tvDesc);
+//            tvDesc.setText(mails.getDescription());
+//        }
+//    }
 
     @Override
     public void onCreate( Bundle savedInstanceState) {
@@ -45,13 +41,12 @@ public class MailDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable android.view.ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.mail_detail_fragment, container,false);
 
-//
 //        tvName.setText(mails.getName());
 //        tvDesc.setText(mails.getDescription());
         return v;
     }
 
-public void Detail(Mails mails){
+public void getDetail(Mails mails){
     tvName=getView().findViewById(R.id.tvName);
     tvDesc=getView().findViewById(R.id.tvDesc);
 tvName.setText(mails.getName());

@@ -13,83 +13,59 @@ import android.content.Context;
 import java.util.ArrayList;
 
 public class MailAdapter extends RecyclerView.Adapter <MailAdapter.MailViewHolder> {
-
-
-    public interface onClick {
-    }
-
-    public static class ExampleViewHolder extends RecyclerView.ViewHolder {
-private Mails[] mailList;
-private Context context;
-private onClick click;
-
-    public MailAdapter(Mails[] mailList, Context context) {
-        this.mailList=mailList;
-        this.click=click;
-        this.context=context;
-    }
-
-
-
-    public static class MailViewHolder extends RecyclerView.ViewHolder {
+    private ArrayList<Mails> mailList;
+    private itemClick click;
+    public static class MailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        public ImageView ivIcon;
         public TextView tvName;
-        public TextView tvDescription;
+        public TextView tvDesc;
         public TextView tvTime;
-        onClick click;
-        int position;
-        private Mails[] mailList;
 
-        public MailViewHolder(@NonNull View itemView, final Context context) {
+        public itemClick click;
+        public MailViewHolder(View itemView, itemClick click) {
             super(itemView);
-            tvName=itemView.findViewById(R.id.tvName);
-            tvDescription=itemView.findViewById(R.id.tvDesc);
-            tvTime=itemView.findViewById(R.id.tvTime);
-            this.click=click;
-itemView.setOnClickListener(new View.OnClickListener() {
+            ivIcon = itemView.findViewById(R.id.icon);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvDesc = itemView.findViewById(R.id.tvDesc);
+            tvTime = itemView.findViewById(R.id.tvTime);
 
-    @Override
-    public void onClick(View v) {
-        click.clicked(getAdapterPosition());
-    }
-});
-
-    }
-
-
-        public void setPosition(int position) {
-            this.position=position;
+            this.click = click;
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-
+            click.onClick(getAdapterPosition());
         }
     }
-    @NonNull
-    @Override
-    public MailAdapter.MailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
-        View v= layoutInflater.inflate(R.layout.mail_item,parent,false);
-        return new MailViewHolder(v,click);
+
+    public MailAdapter(ArrayList<Mails> mailList, itemClick click) {
+        this.mailList = mailList;
+        this.click = click;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MailAdapter.MailViewHolder holder, int position) {
-Mails message=mailList[position];
-        holder.tvName.setText(message.getName());
-        holder.tvDescription.setText(message.getDescription());
-        holder.tvTime.setText(message.getTime());
+    public MailViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.mail_item, parent, false);
+        return new MailViewHolder(v, click);
+    }
 
-//        holder.setPosition(position);
+    @Override
+    public void onBindViewHolder(MailViewHolder holder, int position) {
+        Mails currentItem = mailList.get(position);
+
+        holder.tvName.setText(currentItem.getName());
+        holder.tvDesc.setText(currentItem.getDescription());
+        holder.tvTime.setText(currentItem.getTime());
+
     }
 
     @Override
     public int getItemCount() {
-        return mailList.length;
+        return mailList.size();
     }
 
-interface onClick{
-        void clicked(int position);
-
-}
+    interface itemClick{
+        void onClick(int position);
+    }
 }

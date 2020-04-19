@@ -9,19 +9,6 @@ public class Mails {
     private String time;
 
 
-    //    public static List<Mails> items=new ArrayList<>();
-//    public static void generate(){
-//        items.add(new Mails("Assem Sandibayeva", "Some text","12:03"));
-//        items.add(new Mails("Aigerim Kaimakova", "Some text","13:30"));
-//        items.add(new Mails("Aktoty Saubayeva", "Some text","14:20"));
-//        items.add(new Mails("Aktoty Saubayeva", "Some text","15:20"));
-//        items.add(new Mails("Aktoty Saubayeva", "Some text","18:20"));
-//        items.add(new Mails("Aktoty Saubayeva", "Some text","20:20"));
-//        items.add(new Mails("Aktoty Saubayeva", "Some text","8:20"));
-//        items.add(new Mails("Aktoty Saubayeva", "Some text","8:47"));
-//        items.add(new Mails("Assem Sandibayeva", "Some text","12:53"));
-//
-//    }
     public String getName(){
         return name;
     }

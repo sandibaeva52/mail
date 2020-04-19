@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences preferences=getSharedPreferences(PREFER_NAME, MODE_PRIVATE);
         emailKey=preferences.getString(KEY_EMAIL,"");
         passKey=preferences.getString(KEY_PASSWORD,"");
-        if(!emailKey.isEmpty() && !passKey.isEmpty()){
+        if(emailKey.length()>0 && passKey.length()>0){
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
@@ -47,12 +48,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String user =username.getText().toString();
                 String pass =password.getText().toString();
-
+             if(user.length()<=0&&pass.length()<=0){
+        Toast.makeText(LoginActivity.this, "Enter email and password, please ", Toast.LENGTH_SHORT).show();
+        return;
+}
                 SharedPreferences preferences=getSharedPreferences(PREFER_NAME, MODE_PRIVATE);
                 SharedPreferences.Editor editor=preferences.edit();
                 editor.putString(KEY_EMAIL, username.getText().toString());
                 editor.putString(KEY_PASSWORD, password.getText().toString());
-                editor.apply();
+                editor.commit();
+//                editor.apply();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("emailKey", user);
                 intent.putExtra("passKey", pass);
