@@ -8,7 +8,8 @@ public class Mails {
     private String description;
     private String time;
 
-//    public static List<Mails> items=new ArrayList<>();
+
+    //    public static List<Mails> items=new ArrayList<>();
 //    public static void generate(){
 //        items.add(new Mails("Assem Sandibayeva", "Some text","12:03"));
 //        items.add(new Mails("Aigerim Kaimakova", "Some text","13:30"));
@@ -45,4 +46,6 @@ public class Mails {
         this.description=description;
         this.time=time;
     }
+
+
 }

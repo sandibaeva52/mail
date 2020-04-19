@@ -29,7 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences preferences=getSharedPreferences(PREFER_NAME, MODE_PRIVATE);
         emailKey=preferences.getString(KEY_EMAIL,"");
         passKey=preferences.getString(KEY_PASSWORD,"");
-
+        if(!emailKey.isEmpty() && !passKey.isEmpty()){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
         Button btnReg=(Button)findViewById(R.id.signup);
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +54,9 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString(KEY_PASSWORD, password.getText().toString());
                 editor.apply();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("loginString", user);
+                intent.putExtra("emailKey", user);
+                intent.putExtra("passKey", pass);
+
                 startActivity(intent);
                 finish();
 

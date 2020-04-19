@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MailListFragment extends Fragment  {
+public class MailListFragment extends Fragment implements MailAdapter.onClick {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mailAdapter;
     private Mails[] mailList;
@@ -24,10 +24,10 @@ private MailDetailFragment mailDetailFragment;
         super.onCreate(savedInstanceState);
     }
 
-//    @Override
 //    public void clicked(int position) {
-//MailDetailFragment mailDetailFragment=(MailDetailFragment) getFragmentManager().findFragmentById(R.id.MailDetail);
-//mailDetailFragment.get(position);
+//
+////MailDetailFragment mailDetailFragment=(MailDetailFragment) getFragmentManager().findFragmentById(R.id.MailDetail);
+////mailDetailFragment.get(position);
 //    }
 
     @Override
@@ -37,10 +37,16 @@ mailList= DataModel.getMailList();
         recyclerView=view.findViewById(R.id.recyclerView);
 recyclerView.setHasFixedSize(true);
 layoutManager=new LinearLayoutManager(getActivity());
-mailAdapter=new MailAdapter(mailList, getContext());
+mailAdapter=new MailAdapter(mailList, (MailAdapter.onClick) getContext());
 recyclerView.setLayoutManager(layoutManager);
 recyclerView.setAdapter(mailAdapter);
         return view;
+    }
+
+    @Override
+    public void clicked(int position) {
+
+
     }
 
 

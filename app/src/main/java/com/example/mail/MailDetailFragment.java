@@ -51,6 +51,12 @@ public class MailDetailFragment extends Fragment {
         return v;
     }
 
+public void Detail(Mails mails){
+    tvName=getView().findViewById(R.id.tvName);
+    tvDesc=getView().findViewById(R.id.tvDesc);
+tvName.setText(mails.getName());
+tvDesc.setText(mails.getDescription());
+}
 
 
 

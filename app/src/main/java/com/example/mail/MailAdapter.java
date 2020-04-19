@@ -6,12 +6,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Context;
 
 import java.util.ArrayList;
 
 public class MailAdapter extends RecyclerView.Adapter <MailAdapter.MailViewHolder> {
+
+
+    public interface onClick {
+    }
+
+    public static class ExampleViewHolder extends RecyclerView.ViewHolder {
 private Mails[] mailList;
 private Context context;
 private onClick click;
@@ -37,10 +44,12 @@ private onClick click;
             tvName=itemView.findViewById(R.id.tvName);
             tvDescription=itemView.findViewById(R.id.tvDesc);
             tvTime=itemView.findViewById(R.id.tvTime);
+            this.click=click;
 itemView.setOnClickListener(new View.OnClickListener() {
+
     @Override
     public void onClick(View v) {
-        click.clicked(mailList[position]);
+        click.clicked(getAdapterPosition());
     }
 });
 
@@ -50,13 +59,18 @@ itemView.setOnClickListener(new View.OnClickListener() {
         public void setPosition(int position) {
             this.position=position;
         }
+
+        @Override
+        public void onClick(View v) {
+
+        }
     }
     @NonNull
     @Override
     public MailAdapter.MailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
         View v= layoutInflater.inflate(R.layout.mail_item,parent,false);
-        return new MailViewHolder(v,context);
+        return new MailViewHolder(v,click);
     }
 
     @Override
@@ -65,8 +79,8 @@ Mails message=mailList[position];
         holder.tvName.setText(message.getName());
         holder.tvDescription.setText(message.getDescription());
         holder.tvTime.setText(message.getTime());
-        
-        holder.setPosition(position);
+
+//        holder.setPosition(position);
     }
 
     @Override
@@ -75,6 +89,7 @@ Mails message=mailList[position];
     }
 
 interface onClick{
-        void clicked(Mails mail);
+        void clicked(int position);
+
 }
 }

@@ -1,5 +1,6 @@
 package com.example.mail;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -15,9 +16,9 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity  {
     FragmentManager fragmentManager;
+    Toolbar toolbar;
     String mail="";
     Button btnlogout;
-    private androidx.appcompat.widget.Toolbar toolbar;
     private static  final String PREFER_NAME="pref";
     private static  final String KEY_EMAIL="email_key";
     private static  final String KEY_PASSWORD="pass_key";
@@ -26,10 +27,11 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("All mails");
-        toolbar.setTitleTextColor(0xFFFFFFFF);
-        setSupportActionBar(toolbar);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ActionBar actionBar= getSupportActionBar();
+        actionBar.setTitle("E-mail");
+//        toolbar.setTitle("All mails");
+//        setSupportActionBar(toolbar);
         Fragment listFr=new MailListFragment();
         Fragment detailFr=new MailDetailFragment();
 
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 //
 //    public void clicked(Mails mail){
-//fragmentManager.beginTransaction().replace(R.id.MailList, new MailDetailFragment(mail)).commit();
+//        fragmentManager.beginTransaction().replace(R.id.MailList, new MailDetailFragment(mail)).commit();
 //    }
 //    public void onCallBack(View view) {
 //        fragmentManager.beginTransaction().replace(R.id.MailList, MailListFragment).commit();
